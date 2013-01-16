@@ -25,4 +25,4 @@ end
 
 ## TODO
 
-Turn this into a gem before so that the whole world can benifit! The server and Gem are pretty much done, however, some finishing touches are required which I just don't have time for right now.
+Turn this into a Gem so that the whole world can benefit! The server and Gem are pretty much done, however, some finishing touches are required which I just don't have time for right now.
