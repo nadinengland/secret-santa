@@ -16,3 +16,6 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# Max OS X
+.DS_Store
