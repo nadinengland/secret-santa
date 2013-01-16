@@ -1,4 +1,4 @@
-require_relative 'enumerable-derangements'
+require_relative 'array-derangement'
 
 # A SecretSantaGenerator useful for complex friendship group relationships.
 class SecretSantaGenerator
@@ -20,7 +20,7 @@ class SecretSantaGenerator
     return unless santas
 
     # calculate derangements
-    @perms = santas.derangements
+    @perms = santas.derangement
 
     # No need to reject permutations if there are nonstraints
     return unless constraints
