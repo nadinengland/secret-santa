@@ -25,7 +25,7 @@ end
 
 ## Example
 
-`example.rb` provides a ready made script to run your own secret santa draw. Just ammend to include the necessary people, emails and constraints then install the dependencies:
+`example.rb` provides a ready made script to run your own secret santa draw. Just amend to include the necessary people, emails and constraints then install the dependencies:
 
 ```Shell
 $ bundle install
