@@ -5,16 +5,17 @@ class SecretSantaGenerator
   # Calucations all possible permitations
   # @param [Array] the Secret Santas whom wish to take part
   # @param [Array] 2D array of constraints, with each inner array containing
-	#   people who cannot purcahse for each other:
-	#
-	#       [ [:thomas, :sarah, :ben], [:thomas, :james] ]
-	# 
-	#   Permutations where Thomas has Sarah, Ben or James will be rejected.
-	#   Similary, permutations where Sarah, Ben or James have Thomas will be
-	#   rejected. Permutations where Sarah buys for Ben or Ben buys for Sarah
-	#   will be rejected also.
-  def initialize(santas, constraints = nil)
+  #   people who cannot purcahse for each other:
+  #
+  #       [ [:thomas, :sarah, :ben], [:thomas, :james] ]
+  # 
+  #   Permutations where Thomas has Sarah, Ben or James will be rejected.
+  #   Similary, permutations where Sarah, Ben or James have Thomas will be
+  #   rejected. Permutations where Sarah buys for Ben or Ben buys for Sarah
+  #   will be rejected also.
+  def initialize(santas, constraints)
     @perms = []
+    @constraints = constraints || []
 
     # No permutations for no people
     return unless santas
@@ -23,23 +24,23 @@ class SecretSantaGenerator
     @perms = santas.derangement
 
     # No need to reject permutations if there are nonstraints
-    return unless constraints
+    return if @constraints.empty?
 
     # Begin filtering the permutations, rejecting where the Secret Santa has an
     # invalid recipient
     @perms.reject! do |recipients|
-	    # Each contraint must be satisfied.
-	    constraints.any? do |constraint|
+      # Each contraint must be satisfied.
+      @constraints.any? do |constraint|
 
-	      # The constraints need to be in reverse too. A constraint
-	      # might be A ~> B, but B ~> A needs to be done also.        
-	      constraint.permutation(2).any? do |constraint_pair|
-	        
-	        # Combine the santas and their recipients and make sure none are
-	        # buying for a constraint
-	        santas.zip(recipients).any? { |match| match == constraint_pair }
-	      end
-	    end
+        # The constraints need to be in reverse too. A constraint
+        # might be A ~> B, but B ~> A needs to be done also.        
+        @constraint.permutation(2).any? do |constraint_pair|
+          
+          # Combine the santas and their recipients and make sure none are
+          # buying for a constraint
+          santas.zip(recipients).any? { |match| match == constraint_pair }
+        end
+      end
     end
   end
 

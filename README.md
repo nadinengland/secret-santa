@@ -23,6 +23,20 @@ if generator.valid?
 end
 ```
 
+## Example
+
+`example.rb` provides a ready made script to run your own secret santa draw. Just ammend to include the necessary people, emails and constraints then install the dependencies:
+
+```Shell
+$ bundle install
+```
+
+Finally, run the script, it will ask you for some details to send the email to the Santa's.
+
+```Shell
+$ ruby example.rb
+```
+
 ## TODO
 
 Turn this into a Gem so that the whole world can benefit! The server and Gem are pretty much done, however, some finishing touches are required which I just don't have time for right now.
